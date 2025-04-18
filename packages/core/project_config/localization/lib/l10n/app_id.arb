@@ -1,0 +1,20 @@
+{
+    "@@locale": "id",
+    "appName": "Quran Pro",
+    "search": "Pencarian",
+    "recentlyRead": "Terakhir dibaca",
+    "somethingAyah": "{ayah} ayat",
+    "@somethingAyah": {
+        "description": "number of ayah + ayat",
+        "placeholders": {
+            "ayah": {
+                "type": "int"
+            }
+        }
+    },
+    "surah": "Surah",
+    "juz": "Juz",
+    "page": "Halaman",
+    "makiyyah": "Makiyyah",
+    "madaniyyah": "Madaniyyah"
+}

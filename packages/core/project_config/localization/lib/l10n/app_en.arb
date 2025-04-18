@@ -1,0 +1,20 @@
+{
+    "@@locale": "en",
+    "appName": "Quran Pro",
+    "search": "Search",
+    "recentlyRead": "Recently Read",
+    "somethingAyah": "{ayah} ayah",
+    "@somethingAyah": {
+        "description": "number of ayah + ayah",
+        "placeholders": {
+            "ayah": {
+                "type": "int"   
+            }
+        }
+    },
+    "surah": "Surah",
+    "juz": "Juz",
+    "page": "Page",
+    "makiyyah": "Makiyyah",
+    "madaniyyah": "Madaniyyah"
+}

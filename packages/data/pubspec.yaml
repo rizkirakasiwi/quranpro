@@ -1,0 +1,34 @@
+name: data
+description: "A new Flutter package project."
+version: 0.0.1
+resolution: workspace
+publish_to: none
+
+environment:
+  sdk: ">=3.7.2 <4.0.0"
+  flutter: ">=3.29.2"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  domain:
+    path: ../../packages/domain
+  network:
+    path: ../../packages/core/network
+  local_storage:
+    path: ../../packages/core/local_storage
+  common:
+    path: ../../packages/core/common
+  dependency:
+    path: ../../packages/core/project_config/dependency
+
+  injector: ^4.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  mocktail: ^1.0.4
+  hive_generator: ^2.0.1
+  build_runner: ^2.4.15
