@@ -1,52 +1,39 @@
-import 'package:local_storage/core/local_storage_strategy.dart';
-import 'package:local_storage/core/local_storage_data.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
-import 'package:flutter/material.dart';
+import 'package:local_storage/core/local_storage_strategy.dart';
 
-class HiveStorage<T extends LocalStorageData> implements LocalStorageStrategy {
+class HiveStorage implements LocalStorageStrategy {
   const HiveStorage();
 
-  Future<Box> _openBox(String name) async {
-    return await Hive.openBox(name);
+  Future<Box> _openBox(String storageName) async {
+    return await Hive.openBox(storageName);
   }
-
+  
   @override
-  Future<bool> save(LocalStorageData data) async {
+  Future<bool> delete(String storageName, String key) async {
     try {
-      final box = await _openBox(data.storageName);
-      await box.put(data.storageKey, data);
+      final box = await _openBox(storageName);
+      await box.delete(key);
       return true;
     } catch (e, stackTrace) {
-      debugPrint('HiveSmartStorage.save error: $e\n$stackTrace');
+      debugPrint('HiveStorage.delete error: $e\n$stackTrace');
       return false;
     }
   }
 
   @override
-  Future<T?> get(String storageName, String storageKey) async {
+  Future<T?> get<T>(String storageName, String key) async {
     try {
       final box = await _openBox(storageName);
-      return box.get(storageKey) as T?;
+      return box.get(key) as T?;
     } catch (e, stackTrace) {
-      debugPrint('HiveSmartStorage.get error: $e\n$stackTrace');
+      debugPrint('HiveStorage.get error: $e\n$stackTrace');
       return null;
     }
   }
 
   @override
-  Future<bool> delete(String storageName, String storageKey) async {
-    try {
-      final box = await _openBox(storageName);
-      await box.delete(storageKey);
-      return true;
-    } catch (e, stackTrace) {
-      debugPrint('HiveSmartStorage.delete error: $e\n$stackTrace');
-      return false;
-    }
-  }
-
-  @override
-  Future<List<T>> getAll(String storageName) async {
+  Future<List<T>> getAll<T>(String storageName) async {
     try {
       final box = await _openBox(storageName);
       return box.values.cast<T>().toList();
@@ -57,13 +44,22 @@ class HiveStorage<T extends LocalStorageData> implements LocalStorageStrategy {
   }
 
   @override
-  Future<List<LocalStorageData>> getList(
-    String storageName,
-    String storageKey,
-  ) async {
+  Future<bool> save<T>(String storageName, String key, T data) async {
     try {
       final box = await _openBox(storageName);
-      final result = box.get(storageKey);
+      await box.put(key, data);
+      return true;
+    } catch (e, stackTrace) {
+      debugPrint('HiveStorage.save error: $e\n$stackTrace');
+      return false;
+    }
+  }
+
+  @override
+  Future<List<T>> getList<T>(String storageName, String key) async {
+    try {
+      final box = await _openBox(storageName);
+      final result = box.get(key);
 
       if (result == null) {
         return [];
@@ -81,18 +77,15 @@ class HiveStorage<T extends LocalStorageData> implements LocalStorageStrategy {
   }
 
   @override
-  Future<bool> saveList(
-    String storageName,
-    String storageKey,
-    List<LocalStorageData> data,
-  ) async {
+  Future<bool> saveList<T>(String storageName, String key, List<T> data) async {
     try {
       final box = await _openBox(storageName);
-      await box.put(storageKey, data);
+      await box.put(key, data);
       return true;
     } catch (e, s) {
-      debugPrint('HiveSmartStorage.saveList error: $e\n$s');
+      debugPrint('HiveStorage.saveList error: $e\n$s');
       return false;
     }
   }
+  
 }

@@ -1,5 +1,4 @@
 import 'package:local_storage/local_storage.dart';
-import 'package:data/datasource/local/constant/hive_constant.dart';
 
 part 'surah_entity.g.dart';
 

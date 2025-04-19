@@ -3,3 +3,4 @@ export 'package:local_storage/helper/local_storage.dart';
 export 'package:local_storage/library/hive_storage.dart';
 export 'package:local_storage/di/local_storage_di.dart';
 export 'package:hive/hive.dart';
+export 'package:local_storage/library/constant/hive_constant.dart';

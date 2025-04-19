@@ -9,11 +9,11 @@ class LocalSurahDatasourceImpl implements LocalSurahDatasource {
 
   @override
   Future<List<SurahEntity>> getSurahList() async {
-    return await storage.getList(SurahEntity());
+    return await storage.getListObject(SurahEntity());
   }
   
   @override
   Future<bool> saveSurahList(List<SurahEntity> surah) async {
-    return await storage.saveList(surah);
+    return await storage.saveListObject(surah);
   }
 }
