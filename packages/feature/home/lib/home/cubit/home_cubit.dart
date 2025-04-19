@@ -6,24 +6,24 @@ import 'package:home/home/cubit/home_state.dart';
 import 'package:home/home/data/mapper.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  final GetSurahUsecase getSurahUseCase;
+  final GetSurahUsecase _getSurahUseCase;
 
-  HomeCubit(this.getSurahUseCase) : super(OnInitial());
+  HomeCubit(this._getSurahUseCase) : super(HomeInitial());
 
   void getSurah() async {
-    emit(OnLoading());
-    final listOfSurah = await getSurahUseCase.call();
+    emit(HomeLoading());
+    final listOfSurah = await _getSurahUseCase.call();
     listOfSurah.fold((left) => _handleFail(left), (right) {
       final result = right.map((e) => e.toData()).toList();
-      emit(OnSurahLoaded(result));
+      emit(HomeSurahLoaded(result));
     });
   }
 
   void _handleFail(AppException exception) {
     if (exception is ServerError) {
-      emit(OnError(exception.getMessage()));
+      emit(HomeError(exception.getMessage()));
     } else {
-      emit(OnFail(exception.getMessage()));
+      emit(HomeFail(exception.getMessage()));
     }
   }
 }

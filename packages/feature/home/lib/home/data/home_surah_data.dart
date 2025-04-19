@@ -44,22 +44,3 @@ class HomeSurahData extends Equatable {
     revelationType,
   ];
 }
-
-const listOfSurah = [
-  HomeSurahData(
-    number: 1,
-    englishName: "Al-Fatiha",
-    englishNameTranslation: "The Opening",
-    name: "الفاتحة",
-    revelationType: "Makki",
-    numberOfAyahs: 7,
-  ),
-  HomeSurahData(
-    number: 2,
-    englishName: "Al-Baqarah",
-    englishNameTranslation: "The Cow",
-    name: "البقرة",
-    revelationType: "Madani",
-    numberOfAyahs: 286,
-  ),
-];

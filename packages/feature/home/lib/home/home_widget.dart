@@ -46,9 +46,9 @@ class HomeWidget extends StatelessWidget {
           surah: BlocBuilder<HomeCubit, HomeState>(
             builder: (context, state) {
               switch (state) {
-                case OnLoading():
+                case HomeLoading():
                   return const Center(child: CircularProgressIndicator());
-                case OnSurahLoaded():
+                case HomeSurahLoaded():
                   return HomeListOfSurah(surahList: state.listOfSurah);
                 default:
                   return const Center(child: Text("Error"));

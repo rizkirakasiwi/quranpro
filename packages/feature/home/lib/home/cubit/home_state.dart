@@ -6,31 +6,31 @@ abstract class HomeState extends Equatable {
   List<Object?> get props => [];
 }
 
-class OnSurahLoaded extends HomeState {
+class HomeSurahLoaded extends HomeState {
   final List<HomeSurahData> listOfSurah;
 
-  OnSurahLoaded(this.listOfSurah);
+  HomeSurahLoaded(this.listOfSurah);
 
   @override
   List<Object?> get props => [listOfSurah];
 }
 
-class OnLoading extends HomeState {}
+class HomeLoading extends HomeState {}
 
-class OnInitial extends HomeState {}
+class HomeInitial extends HomeState {}
 
-class OnFail extends HomeState {
+class HomeFail extends HomeState {
   final String? message;
 
-  OnFail(this.message);
+  HomeFail(this.message);
 
   @override
   List<Object?> get props => [message];
 }
 
-class OnError extends HomeState {
+class HomeError extends HomeState {
   final String? message;
-  OnError(this.message);
+  HomeError(this.message);
 
   @override
   List<Object?> get props => [message];
