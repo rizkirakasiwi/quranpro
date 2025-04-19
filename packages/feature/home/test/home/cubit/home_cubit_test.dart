@@ -7,7 +7,6 @@ import 'package:domain/usecase/get_surah_usecase.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:home/home/cubit/home_cubit.dart';
 import 'package:home/home/cubit/home_state.dart';
-import 'package:home/home/data/home_surah_data.dart';
 import 'package:home/home/data/mapper.dart';
 import 'package:mocktail/mocktail.dart';
 

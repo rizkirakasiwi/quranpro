@@ -5,11 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:home/home/cubit/home_cubit.dart';
 import 'package:home/home/cubit/home_state.dart';
 import 'package:home/home/data/home_read_history_data.dart';
-import 'package:home/home/data/home_surah_data.dart';
+import 'package:home/home/widget/home_content.dart';
 import 'package:home/home/widget/home_header.dart';
 import 'package:home/home/widget/home_list_of_surah.dart';
 import 'package:home/home/widget/home_read_history.dart';
-import 'package:home/home/widget/home_content.dart';
 import 'package:localization/helper/get_string.dart';
 
 class HomeWidget extends StatelessWidget {
