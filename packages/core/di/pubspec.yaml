@@ -14,6 +14,9 @@ dependencies:
   dependency:
     path: ../../../packages/core/project_config/dependency
 
+  localization:
+    path: ../../../packages/core/project_config/localization
+
   network:
     path: ../../../packages/core/network
 
