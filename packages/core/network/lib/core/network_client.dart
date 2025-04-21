@@ -14,4 +14,19 @@ abstract class NetworkClient {
     dynamic body,
     required T Function(dynamic json) fromJsonT,
   });
+
+  Future<T> getAlt<T>(
+      String path, {
+        Map<String, String>? headers,
+        required String baseUrl,
+        required T Function(dynamic json) fromJsonT,
+      });
+
+  Future<T> postAlt<T>(
+      String path, {
+        Map<String, String>? headers,
+        required String baseUrl,
+        dynamic body,
+        required T Function(dynamic json) fromJsonT,
+      });
 }

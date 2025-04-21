@@ -11,6 +11,9 @@ part 'get_env.g.dart';
 abstract class Env {
   @EnviedField(varName: 'BASE_URL', obfuscate: true)
   static String baseUrl = _Env.baseUrl;
+
+  @EnviedField(varName: 'BASE_URL_ALT', obfuscate: true)
+  static String baseUrlAlt = _Env.baseUrlAlt;
 }
 
 @Envied(
@@ -22,4 +25,7 @@ abstract class Env {
 abstract class EnvDev {
   @EnviedField(varName: 'BASE_URL', obfuscate: true)
   static String baseUrl = _EnvDev.baseUrl;
+
+  @EnviedField(varName: 'BASE_URL_ALT', obfuscate: true)
+  static String baseUrlAlt = _EnvDev.baseUrlAlt;
 }

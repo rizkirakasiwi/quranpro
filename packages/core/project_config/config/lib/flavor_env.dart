@@ -9,4 +9,10 @@ class FlavorEnv {
     Flavor.prod => Env.baseUrl,
     _ => EnvDev.baseUrl,
   };
+
+  static String baseUrlAlt = switch (FlavorConfig.flavor) {
+    Flavor.dev => EnvDev.baseUrlAlt,
+    Flavor.prod => Env.baseUrlAlt,
+    _ => EnvDev.baseUrlAlt,
+  };
 }
