@@ -61,7 +61,7 @@ class HomeSurah extends StatelessWidget {
                 Row(
                   children: [
                     AppText(
-                      surahData.englishName,
+                      surahData.latinName,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
@@ -70,7 +70,7 @@ class HomeSurah extends StatelessWidget {
                     const SizedBox(width: 4),
                     Expanded(
                       child: AppText(
-                        '(${surahData.englishNameTranslation})',
+                        '(${surahData.translation})',
                         style: const TextStyle(
                           color: Colors.blue,
                           fontStyle: FontStyle.italic,
@@ -102,9 +102,9 @@ class HomeSurah extends StatelessWidget {
                       context,
                       "icons/ic_ayah.svg",
                       context.getString()?.somethingAyah(
-                            surahData.numberOfAyahs,
+                            surahData.totalAyahs,
                           ) ??
-                          "${surahData.numberOfAyahs} Ayah",
+                          "${surahData.totalAyahs} Ayah",
                     ),
                   ],
                 ),
@@ -113,7 +113,7 @@ class HomeSurah extends StatelessWidget {
           ),
 
           // Arabic name
-          SizedBox(width: 100,child: AppText.arabic(surahData.name, style: TextStyle(fontSize: 14), maxLines: 2, textOverflow: TextOverflow.ellipsis,)),
+          SizedBox(width: 100,child: AppText.arabic(surahData.arabicName, style: TextStyle(fontSize: 14), maxLines: 2, textOverflow: TextOverflow.ellipsis,)),
         ],
       ),
     );

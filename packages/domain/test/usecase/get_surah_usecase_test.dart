@@ -21,10 +21,10 @@ void main(){
   test('should return Right(List<SurahModel>) when repository call is successful', () async{
     // Arrange
     final model = [SurahModel()];
-    when(() => mockSurahRepository.getAllSurah()).thenAnswer((_) async => Right(model));
+    when(() => mockSurahRepository.getAllSurah(any())).thenAnswer((_) async => Right(model));
 
     // Act
-    final result = await sut.call();
+    final result = await sut.call("id");
 
     // Assert
     expect(result.getRightOrNull(), model);
@@ -33,10 +33,10 @@ void main(){
   test('should return Left(AppException) when repository call fails', () async {
     // Arrange
     final exception = ClientError('test');
-    when(() => mockSurahRepository.getAllSurah()).thenAnswer((_) async => Left(exception));
+    when(() => mockSurahRepository.getAllSurah(any())).thenAnswer((_) async => Left(exception));
 
     // Act
-    final result = await sut.call();
+    final result = await sut.call("id");
 
     // Assert
     expect(result.getLeftOrNull(), exception);

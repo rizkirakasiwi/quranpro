@@ -8,7 +8,7 @@ class GetSurahUsecase {
 
   const GetSurahUsecase({required this.repository});
 
-  Future<Either<AppException, List<SurahModel>>> call() {
-    return repository.getAllSurah();
+  Future<Either<AppException, List<SurahModel>>> call(String locale) {
+    return repository.getAllSurah(locale);
   }
 }

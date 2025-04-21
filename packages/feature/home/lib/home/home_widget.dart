@@ -12,9 +12,8 @@ import 'package:home/home/widget/home_read_history.dart';
 import 'package:localization/helper/get_string.dart';
 
 class HomeWidget extends StatelessWidget {
-  final HomeState homeState;
 
-  const HomeWidget({super.key, required this.homeState});
+  const HomeWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

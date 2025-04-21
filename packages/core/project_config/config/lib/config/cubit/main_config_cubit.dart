@@ -7,7 +7,7 @@ class MainConfigCubit extends Cubit<MainConfigState>{
   LocalizationSetting localizationSetting;
   MainConfigCubit({required this.localizationSetting}): super(MainDefaultConfig());
 
-  init() async{
+  void initLanguage() async{
     final currentLanguage = await localizationSetting.getLanguage();
     emit(CurrentLanguage(currentLanguage));
   }
