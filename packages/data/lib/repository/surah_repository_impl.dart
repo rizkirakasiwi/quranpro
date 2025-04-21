@@ -15,10 +15,10 @@ class SurahRepositoryImpl implements SurahRepository {
   const SurahRepositoryImpl({required this.remote, required this.local});
 
   @override
-  Future<Either<AppException, List<SurahModel>>> getAllSurah() async {
+  Future<Either<AppException, List<SurahModel>>> getAllSurah(String locale) async {
     return fetchWithLocalFallback(
       localFetch: local.getSurahList,
-      remoteFetch: remote.getSurahList,
+      remoteFetch: () => remote.getSurahList(locale),
       saveToLocal: local.saveSurahList,
       mapper: (e) => e.toModel(),
     );

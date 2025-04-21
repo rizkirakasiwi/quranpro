@@ -42,7 +42,7 @@ void main() {
         when(() => local.getSurahList()).thenAnswer((_) async => fakeEntities);
 
         // Act
-        final result = await sut.getAllSurah();
+        final result = await sut.getAllSurah("id");
 
         // Assert
         expect(result.isRight(), isTrue);
@@ -51,7 +51,7 @@ void main() {
           fakeEntities.map((e) => e.toModel()).toList(),
         );
         verify(() => local.getSurahList()).called(1);
-        verifyNever(() => remote.getSurahList());
+        verifyNever(() => remote.getSurahList(any()));
         verifyNever(() => local.saveSurahList(any()));
       },
     );
@@ -73,12 +73,12 @@ void main() {
 
         when(() => local.getSurahList()).thenAnswer((_) async => []);
         when(
-          () => remote.getSurahList(),
+          () => remote.getSurahList(any()),
         ).thenAnswer((_) async => networkResponse);
         when(() => local.saveSurahList(any())).thenAnswer((_) async => true);
 
         // Act
-        final result = await sut.getAllSurah();
+        final result = await sut.getAllSurah("id");
 
         // Assert
         expect(result.isRight(), isTrue);
@@ -86,86 +86,76 @@ void main() {
           result.getRightOrNull(),
           fallbackLocal.map((e) => e.toModel()).toList(),
         );
-        verify(() => remote.getSurahList()).called(1);
+        verify(() => remote.getSurahList(any())).called(1);
         verify(() => local.saveSurahList(any())).called(1);
         verify(() => local.getSurahList()).called(1);
       },
     );
 
-    test(
-      'should return Left(ClientError) when remote fetch 400',
-          () async {
-        // Arrange
-        final networkResponse = NetworkResponse<List<SurahEntity>>(
-          code: 400,
-          status: 'Client Error',
-          data: [],
-        );
-
-        when(() => local.getSurahList()).thenAnswer((_) async => []);
-        when(
-              () => remote.getSurahList(),
-        ).thenAnswer((_) async => networkResponse);
-
-        // Act
-        final result = await sut.getAllSurah();
-
-        // Assert
-        expect(result.isLeft(), isTrue);
-        expect(
-          result.getLeftOrNull(),
-          isA<ClientError>(),
-        );
-        expect(result.getLeftOrNull()?.getMessage(), networkResponse.status);
-        verify(() => remote.getSurahList()).called(1);
-        verifyNever(() => local.saveSurahList(any()));
-        verify(() => local.getSurahList()).called(1);
-      },
-    );
-
-    test(
-      'should return Left(Server) when remote fetch 500',
-          () async {
-        // Arrange
-        final networkResponse = NetworkResponse<List<SurahEntity>>(
-          code: 500,
-          status: 'Server Error',
-          data: [],
-        );
-
-        when(() => local.getSurahList()).thenAnswer((_) async => []);
-        when(
-              () => remote.getSurahList(),
-        ).thenAnswer((_) async => networkResponse);
-
-        // Act
-        final result = await sut.getAllSurah();
-
-        // Assert
-        expect(result.isLeft(), isTrue);
-        expect(
-          result.getLeftOrNull(),
-          isA<ServerError>(),
-        );
-        expect(result.getLeftOrNull()?.getMessage(), networkResponse.status);
-        verify(() => remote.getSurahList()).called(1);
-        verifyNever(() => local.saveSurahList(any()));
-        verify(() => local.getSurahList()).called(1);
-      },
-    );
-
-    test('should return error when both remote and local fail', () async {
+    test('should return Left(ClientError) when remote fetch 400', () async {
       // Arrange
+      final networkResponse = NetworkResponse<List<SurahEntity>>(
+        code: 400,
+        status: 'Client Error',
+        data: [],
+      );
+
       when(() => local.getSurahList()).thenAnswer((_) async => []);
-      when(() => remote.getSurahList()).thenThrow(Exception('Network error'));
+      when(
+        () => remote.getSurahList(any()),
+      ).thenAnswer((_) async => networkResponse);
 
       // Act
-      final result = await sut.getAllSurah();
+      final result = await sut.getAllSurah("id");
+
+      // Assert
+      expect(result.isLeft(), isTrue);
+      expect(result.getLeftOrNull(), isA<ClientError>());
+      expect(result.getLeftOrNull()?.getMessage(), networkResponse.status);
+      verify(() => remote.getSurahList(any())).called(1);
+      verifyNever(() => local.saveSurahList(any()));
+      verify(() => local.getSurahList()).called(1);
+    });
+
+    test('should return Left(Server) when remote fetch 500', () async {
+      // Arrange
+      final networkResponse = NetworkResponse<List<SurahEntity>>(
+        code: 500,
+        status: 'Server Error',
+        data: [],
+      );
+
+      when(() => local.getSurahList()).thenAnswer((_) async => []);
+      when(
+        () => remote.getSurahList(any()),
+      ).thenAnswer((_) async => networkResponse);
+
+      // Act
+      final result = await sut.getAllSurah("id");
 
       // Assert
       expect(result.isLeft(), isTrue);
       expect(result.getLeftOrNull(), isA<ServerError>());
-      verify(() => remote.getSurahList()).called(1);
+      expect(result.getLeftOrNull()?.getMessage(), networkResponse.status);
+      verify(() => remote.getSurahList(any())).called(1);
+      verifyNever(() => local.saveSurahList(any()));
+      verify(() => local.getSurahList()).called(1);
+    });
+
+    test('should return error when both remote and local fail', () async {
+      // Arrange
+      when(() => local.getSurahList()).thenAnswer((_) async => []);
+      when(
+        () => remote.getSurahList(any()),
+      ).thenThrow(Exception('Network error'));
+
+      // Act
+      final result = await sut.getAllSurah("id");
+
+      // Assert
+      expect(result.isLeft(), isTrue);
+      expect(result.getLeftOrNull(), isA<ServerError>());
+      verify(() => remote.getSurahList(any())).called(1);
       verify(() => local.getSurahList()).called(1);
     });
   });

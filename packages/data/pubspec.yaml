@@ -22,6 +22,8 @@ dependencies:
     path: ../../packages/core/common
   dependency:
     path: ../../packages/core/project_config/dependency
+  config:
+    path: ../../packages/core/project_config/config
 
   injector: ^4.0.0
 

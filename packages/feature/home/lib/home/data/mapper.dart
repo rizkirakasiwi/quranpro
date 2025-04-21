@@ -5,10 +5,10 @@ extension SurahModelToHomeData on SurahModel {
   HomeSurahData toData() {
     return HomeSurahData(
       number: number?.toInt() ?? 0,
-      name: name ?? "",
-      englishName: englishName ?? "",
-      englishNameTranslation: englishNameTranslation ?? "",
-      numberOfAyahs: numberOfAyahs?.toInt() ?? 0,
+      arabicName: arabicName ?? "",
+      latinName: latinName ?? "",
+      translation: translation ?? "",
+      totalAyahs: totalAyahs?.toInt() ?? 0,
       revelationType: revelationType ?? "",
     );
   }

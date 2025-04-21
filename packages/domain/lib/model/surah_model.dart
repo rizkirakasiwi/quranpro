@@ -2,18 +2,18 @@ import 'package:dependency/equatable.dart';
 
 class SurahModel extends Equatable {
   final num? number;
-  final String? name;
-  final String? englishName;
-  final String? englishNameTranslation;
-  final num? numberOfAyahs;
+  final String? arabicName;
+  final String? latinName;
+  final String? translation;
+  final num? totalAyahs;
   final String? revelationType;
 
   const SurahModel({
     this.number,
-    this.name,
-    this.englishName,
-    this.englishNameTranslation,
-    this.numberOfAyahs,
+    this.arabicName,
+    this.latinName,
+    this.translation,
+    this.totalAyahs,
     this.revelationType,
   });
 
@@ -26,21 +26,21 @@ class SurahModel extends Equatable {
     String? revelationType,
   }) => SurahModel(
     number: number ?? this.number,
-    name: name ?? this.name,
-    englishName: englishName ?? this.englishName,
-    englishNameTranslation:
-        englishNameTranslation ?? this.englishNameTranslation,
-    numberOfAyahs: numberOfAyahs ?? this.numberOfAyahs,
+    arabicName: name ?? arabicName,
+    latinName: englishName ?? latinName,
+    translation:
+        englishNameTranslation ?? translation,
+    totalAyahs: numberOfAyahs ?? totalAyahs,
     revelationType: revelationType ?? this.revelationType,
   );
 
   @override
   List<Object?> get props => [
     number,
-    name,
-    englishName,
-    englishNameTranslation,
-    numberOfAyahs,
+    arabicName,
+    latinName,
+    translation,
+    totalAyahs,
     revelationType,
   ];
 }

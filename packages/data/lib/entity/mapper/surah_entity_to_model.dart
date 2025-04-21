@@ -5,10 +5,10 @@ extension SurahEntityToModel on SurahEntity {
   SurahModel toModel() {
     return SurahModel(
       number: number,
-      name: name,
-      englishName: englishName,
-      englishNameTranslation: englishNameTranslation,
-      numberOfAyahs: numberOfAyahs,
+      arabicName: name,
+      latinName: englishName,
+      translation: englishNameTranslation,
+      totalAyahs: numberOfAyahs,
       revelationType: revelationType,
     );
   }
