@@ -1,4 +1,4 @@
-name: core_provider
+name: app_provider
 description: "A new Flutter package project."
 version: 0.0.1
 resolution: workspace
@@ -25,6 +25,10 @@ dependencies:
     path: ../../../packages/data
   local_storage:
     path: ../../../packages/core/local_storage
+
+  network:
+    path: ../../../packages/core/network
+
   injector: ^4.0.0
 
 dev_dependencies:

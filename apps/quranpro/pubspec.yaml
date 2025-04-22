@@ -39,8 +39,6 @@ dependencies:
     path: ../../packages/core/project_config/localization
   design_system:
     path: ../../packages/core/design_system
-  di:
-    path: ../../packages/core/di
   home:
     path: ../../packages/feature/home
   dependency:
@@ -49,8 +47,8 @@ dependencies:
     path: ../../packages/core/project_config/config
   local_storage:
     path: ../../packages/core/local_storage
-  core_provider:
-    path: ../../packages/core/core_provider
+  app_provider:
+    path: ../../packages/core/app_provider
 
   injector: ^4.0.0
   path_provider: ^2.1.5

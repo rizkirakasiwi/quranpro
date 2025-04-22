@@ -6,10 +6,9 @@ environment:
 workspace:
   - packages/core/design_system
   - packages/core/network
-  - packages/core/di
   - packages/core/local_storage
   - packages/core/common
-  - packages/core/core_provider
+  - packages/core/app_provider
   - packages/domain
   - packages/data
   - packages/core/project_config/dependency
