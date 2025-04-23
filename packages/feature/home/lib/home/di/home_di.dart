@@ -1,8 +1,9 @@
+import 'package:dependency/auto_injector.dart';
 import 'package:home/home/cubit/home_cubit.dart';
-import 'package:injector/injector.dart';
 
-extension HomeDi on Injector {
-  void injectHome() {
-    registerSingleton(() => HomeCubit(get()));
-  }
-}
+final homeModule = AutoInjector(
+  tag: 'home_module',
+  on: (inject) {
+    inject.addLazySingleton(HomeCubit.new);
+  },
+);

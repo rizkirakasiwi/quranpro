@@ -1,8 +1,9 @@
+import 'package:dependency/auto_injector.dart';
 import 'package:domain/usecase/get_surah_usecase.dart';
-import 'package:injector/injector.dart';
 
-extension UsecaseDi on Injector {
-  void injectUseCase(){
-    registerSingleton(() => GetSurahUsecase(repository: get()));
+final usecaseModule = AutoInjector(
+  tag: 'usecase_module',
+  on: (inject) {
+    inject.add(GetSurahUsecase.new);
   }
-}
+);

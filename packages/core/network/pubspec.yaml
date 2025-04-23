@@ -17,7 +17,7 @@ dependencies:
     path: ../../../packages/core/project_config/config
   dependency:
     path: ../../../packages/core/project_config/dependency
-  injector: ^4.0.0
+  
 
 dev_dependencies:
   flutter_test:

@@ -15,7 +15,9 @@ dependencies:
   hive: ^2.2.3
   meta: ^1.16.0
   crypto: ^3.0.6
-  injector: ^4.0.0
+
+  dependency:
+    path: ../../../packages/core/project_config/dependency
 
 dev_dependencies:
   flutter_test:

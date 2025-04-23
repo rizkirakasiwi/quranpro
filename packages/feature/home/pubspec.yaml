@@ -26,7 +26,7 @@ dependencies:
     path: ../../../packages/domain
   common:
     path: ../../../packages/core/common
-  injector: ^4.0.0
+  
 
 dev_dependencies:
   flutter_test:

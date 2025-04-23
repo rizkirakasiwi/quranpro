@@ -41,8 +41,6 @@ dependencies:
     path: ../../packages/core/design_system
   home:
     path: ../../packages/feature/home
-  dependency:
-    path: ../../packages/core/project_config/dependency
   config:
     path: ../../packages/core/project_config/config
   local_storage:
@@ -50,7 +48,6 @@ dependencies:
   app_provider:
     path: ../../packages/core/app_provider
 
-  injector: ^4.0.0
   path_provider: ^2.1.5
 
 dev_dependencies:

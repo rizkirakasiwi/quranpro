@@ -16,7 +16,7 @@ dependencies:
     path: ../../../../packages/core/project_config/dependency
   localization:
     path: ../../../../packages/core/project_config/localization
-  injector: ^4.0.0
+  
 
 dev_dependencies:
   flutter_test:

@@ -1,9 +1,8 @@
-import 'package:config/flavor.dart';
 import 'package:app_provider/bloc_provider.dart';
-import 'package:app_provider/hive_adapter.dart';
 import 'package:app_provider/di.dart';
+import 'package:app_provider/hive_adapter.dart';
+import 'package:config/flavor.dart';
 import 'package:flutter/material.dart';
-import 'package:injector/injector.dart';
 import 'package:local_storage/local_storage.dart';
 import 'package:localization/setting/localization_setting.dart';
 import 'package:path_provider/path_provider.dart';
@@ -18,8 +17,7 @@ void main() async {
   registerAllHiveAdapter();
 
   // Init injector
-  final injector = Injector.appInstance;
-  injector.injectAll();
+  final injector = appModule;
 
   // Setup current language
   final currentLanguage =
@@ -28,5 +26,5 @@ void main() async {
   // Setup current environment
   FlavorConfig.flavor = Flavor.dev;
 
-  runApp(blocProvider(MyApp(currentLanguage: currentLanguage.name), injector));
+  runApp(blocProvider(MyApp(currentLanguage: currentLanguage.name)));
 }
